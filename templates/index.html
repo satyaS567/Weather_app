@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather|App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="heading">Weather App</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter City">
+            <button type="submit" class="btn">Search</button>
+        </form>
+        <div class="weather">
+            <div class="left">
+                <h2 class="temp">TEMPRATURE:{{ temp }}&#176; C</h2>
+                <h2 class="city">CITY:{{ city }}</h2>
+                <h2 class="city">PRESSURE:{{ pressure }}</h2>
+                <h2 class="city">HUMIDITY:{{ humidity }}</h2>
+                <h2 class="city">WIND SPEED:{{ wind_speed }}</h2>
+
+            </div>
+            <div class="right">
+                <div class="icon">
+                    <p><img src="http://openweathermap.org/img/w/{{ icon }}.png" width="120px"></p>
+                </div>
+                <div class="condition">
+                    <p>DESCRIPTION:{{ desc }}</p>
+                    <p>DAY:{{ day }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
